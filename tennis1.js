@@ -2,7 +2,6 @@
 
 function getScore(m_score1, m_score2) {
     var score = "";
-    var tempScore = 0;
     if (m_score1 === m_score2) {
         switch (m_score1) {
             case 0:
@@ -19,15 +18,25 @@ function getScore(m_score1, m_score2) {
                 break;
         }
     } else if (m_score1 >= 4 || m_score2 >= 4) {
-        var minusResult = m_score1 - m_score2;
-        if (minusResult === 1) {score = "Advantage player1";}
-        else if (minusResult === -1) {score = "Advantage player2";}
-        else if (minusResult >= 2) {score = "Win for player1";}
-        else {score = "Win for player2";}
+        score = getAdvantageOrWin(m_score1, m_score2) + " " + getWinner(m_score1, m_score2);
+
     } else {
         score = getScoreString(m_score1) + '-' + getScoreString(m_score2);
     }
     return score;
+}
+
+function getAdvantageOrWin(score1, score2) {
+    const minusResult = score1 - score2;
+    if( Math.abs(minusResult) >= 2) {
+        return "Win for"
+    } else {
+        return "Advantage"
+    }
+}
+
+function getWinner(score1, score2) {
+    return score1 > score2 ? "player1" : "player2";
 }
 
 function getScoreString(tempScore) {
