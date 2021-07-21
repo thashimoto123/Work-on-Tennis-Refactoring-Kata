@@ -1,22 +1,9 @@
 'use strict';
 
 function getScore(m_score1, m_score2) {
-    var score = "";
+    let score;
     if (m_score1 === m_score2) {
-        switch (m_score1) {
-            case 0:
-                score = "Love-All";
-                break;
-            case 1:
-                score = "Fifteen-All";
-                break;
-            case 2:
-                score = "Thirty-All";
-                break;
-            default:
-                score = "Deuce";
-                break;
-        }
+        score = getSameScoreName(m_score1, m_score2);
     } else if (m_score1 >= 4 || m_score2 >= 4) {
         score = getAdvantageOrWin(m_score1, m_score2) + " " + getWinner(m_score1, m_score2);
 
@@ -26,36 +13,34 @@ function getScore(m_score1, m_score2) {
     return score;
 }
 
-function getAdvantageOrWin(score1, score2) {
-    const minusResult = score1 - score2;
-    if( Math.abs(minusResult) >= 2) {
-        return "Win for"
+function getSameScoreName(score1, score2) {
+    if (score1 < 3) {
+        return getScoreString(score2) + "-All";
     } else {
-        return "Advantage"
+        return "Deuce";
     }
+}
+
+function getAdvantageOrWin(score1, score2) {
+    const minusResult = Math.abs(score1 - score2);
+    return minusResult >= 2 ? "Win for" : "Advantage";
 }
 
 function getWinner(score1, score2) {
     return score1 > score2 ? "player1" : "player2";
 }
 
-function getScoreString(tempScore) {
-    var score = "";
-    switch (tempScore) {
+function getScoreString(score) {
+    switch (score) {
         case 0:
-            score += "Love";
-            break;
+            return "Love";
         case 1:
-            score += "Fifteen";
-            break;
+            return "Fifteen";
         case 2:
-            score += "Thirty";
-            break;
+            return "Thirty";
         case 3:
-            score += "Forty";
-            break;
+            return "Forty";
     }
-    return score;
 }
 
 module.exports = getScore;
