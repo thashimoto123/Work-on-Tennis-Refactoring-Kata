@@ -1,29 +1,24 @@
 'use strict';
 
-function getScore(P1point, P2point) {
-    var score = "";
-
-    if (P1point === P2point) {
-        if(P1point > 2) {
-            score = "Deuce";
-            return score;
-        }
-        switch (P1point){
-            case 0:
-                score = "Love";
-                break;
-            case 1:
-                score = "Fifteen";
-                break;
-            case 2:
-                score = "Thirty";
-                break;
-        }
-        score += "-All";
+function getSameScoreName(P1point, P2point) {
+    if (P1point !== P2point) return;
+    switch (P1point){
+        case 0:
+            return "Love-All";
+        case 1:
+            return "Fifteen-All";
+        case 2:
+            return "Thirty-All";
+        default:
+            return "Deuce";
     }
+}
 
-    var P1res;
-    var P2res;
+function getScore(P1point, P2point) {
+    let score = getSameScoreName(P1point, P2point);
+
+    let P1res;
+    let P2res;
     if (P1point > 0 && P2point === 0) {
         if (P1point === 1) {
             P1res = "Fifteen";
