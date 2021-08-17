@@ -1,14 +1,14 @@
 'use strict';
 
-function getScore(m_score1, m_score2) {
+function getScore(score1, score2) {
     let score;
-    if (m_score1 === m_score2) {
-        score = getSameScoreName(m_score1, m_score2);
-    } else if (m_score1 >= 4 || m_score2 >= 4) {
-        score = getAdvantageOrWin(m_score1, m_score2) + " " + getWinner(m_score1, m_score2);
+    if (score1 === score2) {
+        score = getSameScoreName(score1, score2);
+    } else if (score1 >= 4 || score2 >= 4) {
+        score = getAdvantageOrWin(score1, score2) + " " + getWinner(score1, score2);
 
     } else {
-        score = getScoreString(m_score1) + '-' + getScoreString(m_score2);
+        score = getScoreString(score1) + '-' + getScoreString(score2);
     }
     return score;
 }
