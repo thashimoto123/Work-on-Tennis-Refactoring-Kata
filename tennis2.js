@@ -1,7 +1,7 @@
 'use strict';
 
 function getScore(P1point, P2point) {
-    if (isSameScore(P1point, P2point)) return getSameScoreName(P1point, P2point);
+    if (isSameScore(P1point, P2point)) return getSameScoreName(P1point);
     if (isNumberScore(P1point, P2point)) return scoreList[P1point] + "-" + scoreList[P2point];
     if (isAdvantage(P1point, P2point))  return "Advantage " + getWinner(P1point, P2point);
     return "Win for " + getWinner(P1point, P2point);
@@ -9,8 +9,8 @@ function getScore(P1point, P2point) {
 
 const scoreList = ["Love", "Fifteen", "Thirty", "Forty"];
 
-function getSameScoreName(P1point, P2point) {
-    switch (P1point){
+function getSameScoreName(point) {
+    switch (point){
         case 0:
             return "Love-All";
         case 1:
