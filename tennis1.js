@@ -6,7 +6,6 @@ function getScore(score1, score2) {
         score = getSameScoreName(score1, score2);
     } else if (score1 >= 4 || score2 >= 4) {
         score = getAdvantageOrWin(score1, score2) + " " + getWinner(score1, score2);
-
     } else {
         score = getScoreString(score1) + '-' + getScoreString(score2);
     }
