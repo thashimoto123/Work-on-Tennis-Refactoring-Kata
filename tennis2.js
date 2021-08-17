@@ -18,20 +18,10 @@ const scoreList = ["Love", "Fifteen", "Thirty", "Forty"];
 function getScore(P1point, P2point) {
     if (P1point === P2point) return getSameScoreName(P1point, P2point);
     let score;
-    let P1res;
-    let P2res;
-    if (P1point < 4 && P2point < 4) {
-        P1res = scoreList[P1point];
-        P2res = scoreList[P2point];
-        score = P1res + "-" + P2res;
-    }
+    if (P1point < 4 && P2point < 4) return scoreList[P1point] + "-" + scoreList[P2point];
 
-    if (P1point > P2point && P2point >= 3) {
-        score = "Advantage player1";
-    }
-
-    if (P2point > P1point && P1point >= 3) {
-        score = "Advantage player2";
+    if (Math.abs(P1point - P2point) === 1) {
+        return P1point > P2point ? "Advantage player1" : "Advantage player2";
     }
 
     if (P1point >= 4 && P2point >= 0 && (P1point - P2point) >= 2) {
